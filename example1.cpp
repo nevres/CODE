@@ -18,7 +18,7 @@ typedef Angel::vec4  color4;
 typedef Angel::vec4  point4;
 
 int maze[MAX][MAX];
-const int NumVertices = 4000;//(6 faces)(2 triangles/face)(3 vertices/triangle)
+const int NumVertices = 4356;
 
 point4 points[NumVertices];
 color4 colors[NumVertices];
@@ -207,20 +207,21 @@ colorcube()
 	int counter = 0;
 	int x = 0, y = 0;
 
-	for (GLfloat i = -1; i < 0.76; i+=0.16) // for y
+	for (GLfloat i = -1; i < 0.9; i+=0.18) // for y
 	{
 		x = 0;
-		for (GLfloat j = -1; j < 0.76; j+=0.16)// for x
+		for (GLfloat j = -1; j < 0.9; j+=0.18)// for x
 		{
+
 			//std::cout<<j<<"    "<<i<<std::endl;
 			point4 pointZero =point4( j, i,  0.1, 1.0 ); 
-			point4 pointOne = point4( j,  i +0.16,  0.1, 1.0 ); 
-			point4 pointTwo = point4(  j+0.16,  i+0.16,  0.1, 1.0 ); 
-			point4 pointTree =point4(  j+0.16, i,  0.1, 1.0 ); 
+			point4 pointOne = point4( j,  i +0.181,  0.1, 1.0 ); 
+			point4 pointTwo = point4(  j+0.181,  i+0.181,  0.1, 1.0 ); 
+			point4 pointTree =point4(  j+0.181, i,  0.1, 1.0 ); 
 			point4 pointFour =point4( j, i,  -0.1, 1.0 ); 
-			point4 pointFive =point4( j,  i+0.16,  -0.1, 1.0 ); 
-			point4 pointSix = point4(  j+0.16,  i+0.16,  -0.1, 1.0 ); 
-			point4 pointSeven=point4(  j+0.16, i,  -0.1, 1.0 ); 
+			point4 pointFive =point4( j,  i+0.181,  -0.1, 1.0 ); 
+			point4 pointSix = point4(  j+0.181,  i+0.181,  -0.1, 1.0 ); 
+			point4 pointSeven=point4(  j+0.181, i,  -0.1, 1.0 ); 
 
 			std::cout<<maze[x][y];
 			quad( pointOne, pointZero, pointTree, pointTwo, 1, 0, 3, 2 ); // front side 
