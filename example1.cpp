@@ -290,6 +290,7 @@ void motion (int x, int y){
     else Theta[Yaxis]+= 2;
 
 
+
     previousX = x;
     previousY = y;
     glutPostRedisplay();
