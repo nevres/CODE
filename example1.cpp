@@ -17,8 +17,10 @@
 typedef Angel::vec4  color4;
 typedef Angel::vec4  point4;
 
+int sizeOfMaze;
+
 int maze[MAX][MAX];
-const int NumVertices = 4356;
+const int NumVertices = 10000 ;
 
 point4 points[NumVertices];
 color4 colors[NumVertices];
@@ -206,22 +208,25 @@ colorcube()
 	Index = 0;
 	int counter = 0;
 	int x = 0, y = 0;
+	double toIncrease = (double)2/sizeOfMaze;
+	std::cout<<" to increase is : " <<toIncrease<<std::endl;
 
-	for (GLfloat i = -1; i < 0.9; i+=0.18) // for y
-	{
-		x = 0;
-		for (GLfloat j = -1; j < 0.9; j+=0.18)// for x
-		{
+	for (GLfloat i = -1; i < 1-toIncrease; i+=toIncrease) // for y
+ 	{
+ 		x = 0;
+		for (GLfloat j = -1; j < 1-toIncrease; j+=toIncrease)// for x
+ 		{
 
-			//std::cout<<j<<"    "<<i<<std::endl;
-			point4 pointZero =point4( j, i,  0.1, 1.0 ); 
-			point4 pointOne = point4( j,  i +0.181,  0.1, 1.0 ); 
-			point4 pointTwo = point4(  j+0.181,  i+0.181,  0.1, 1.0 ); 
-			point4 pointTree =point4(  j+0.181, i,  0.1, 1.0 ); 
-			point4 pointFour =point4( j, i,  -0.1, 1.0 ); 
-			point4 pointFive =point4( j,  i+0.181,  -0.1, 1.0 ); 
-			point4 pointSix = point4(  j+0.181,  i+0.181,  -0.1, 1.0 ); 
-			point4 pointSeven=point4(  j+0.181, i,  -0.1, 1.0 ); 
+ 			//std::cout<<j<<"    "<<i<<std::endl;
+ 			point4 pointZero =point4( j, i,  0.1, 1.0 ); 
+			point4 pointOne = point4( j,  i +toIncrease,  0.1, 1.0 ); 
+			point4 pointTwo = point4(  j+toIncrease,  i+toIncrease,  0.1, 1.0 ); 
+			point4 pointTree =point4(  j+toIncrease, i,  0.1, 1.0 ); 
+ 			point4 pointFour =point4( j, i,  -0.1, 1.0 );
+			point4 pointFive =point4( j,  i+toIncrease,  -0.1, 1.0 ); 
+			point4 pointSix = point4(  j+toIncrease,  i+toIncrease,  -0.1, 1.0 ); 
+			point4 pointSeven=point4(  j+toIncrease, i,  -0.1, 1.0 ); 
+
 
 			std::cout<<maze[x][y];
 			quad( pointOne, pointZero, pointTree, pointTwo, 1, 0, 3, 2 ); // front side 
@@ -408,8 +413,9 @@ int
 main( int argc, char **argv )
 {
 	srand (time(NULL));
-	
-    int size = 5;
+	std::cout<<"Please enter size of maze: "<<std::endl;
+	std::cin>>sizeOfMaze; //must be odd
+	int size = (sizeOfMaze-1)/2;
     int indeks = 0;
     int backtrack_x[CELL];
     int backtrack_y[CELL];
